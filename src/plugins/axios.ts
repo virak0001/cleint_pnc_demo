@@ -2,13 +2,13 @@
 import axios from 'axios'
 
 const axiosInstance = axios.create({
-  baseURL: 'https://api.example.com', // Replace with your API base URL
+  baseURL: 'http://127.0.0.1:8000', // Replace with your API base URL
   headers: {
     'Content-Type': 'application/json'
   }
 })
 
-axiosInstance.get('/sanctum/csrf-cookie')
+axiosInstance.get('sanctum/csrf-cookie')
 
 // Add a request interceptor
 axiosInstance.interceptors.request.use(
