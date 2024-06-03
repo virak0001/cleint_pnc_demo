@@ -4,12 +4,12 @@
     <el-card class="w-full max-w-md shadow-lg">
       <h2 class="text-2xl font-bold mb-6 text-center">Login</h2>
       <el-form @submit="onSubmit">
-        <el-form-item :error="nameError">
-          <el-input placeholder="Name" v-model="password" size="large" />
+        <el-form-item :error="emailError">
+          <el-input placeholder="Email Address" v-model="email" size="large" />
         </el-form-item>
 
-        <el-form-item :error="emailError" class="mt-8">
-          <el-input placeholder="Email Address" v-model="email" size="large" />
+        <el-form-item :error="nameError" class="mt-8">
+          <el-input placeholder="Password" v-model="password" size="large" />
         </el-form-item>
 
         <div>
@@ -28,6 +28,8 @@
 </template>
 
 <script setup lang="ts">
+// import axios from 'axios';
+import axiosInstance from '@/plugins/axios'
 import { useField, useForm } from 'vee-validate'
 import * as yup from 'yup'
 
@@ -44,9 +46,13 @@ const { handleSubmit, isSubmitting } = useForm({
   validationSchema: formSchema
 })
 
-const onSubmit = handleSubmit((values, actions) => {
-  console.log(JSON.stringify(values, null, 2))
-  actions.resetForm()
+const onSubmit = handleSubmit(async (values) => {
+  try {
+    const { data } = await axiosInstance.post('api/login', values)
+    localStorage.setItem('access_token', data.access_token)
+  } catch (error) {
+    console.warn('Error')
+  }
 })
 
 const { value: password, errorMessage: nameError } = useField('password')
