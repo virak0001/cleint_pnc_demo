@@ -1,20 +1,16 @@
 import { defineStore } from 'pinia'
 import { ref } from 'vue'
 
-interface AuthInterface {
-  email: string
-  password: string
-}
-
 export const useAuthStore = defineStore('auth', () => {
   const user = ref()
   const isAuthenticated = ref()
-
-  function login(payload: AuthInterface) {}
+  const permissions = ref()
+  const roles = ref()
 
   return {
     user,
-    isAuthenticated,
-    login
+    roles,
+    permissions,
+    isAuthenticated
   }
 })

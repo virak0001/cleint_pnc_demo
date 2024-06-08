@@ -48,7 +48,7 @@ const { handleSubmit, isSubmitting } = useForm({
 
 const onSubmit = handleSubmit(async (values) => {
   try {
-    const { data } = await axiosInstance.post('api/login', values)
+    const { data } = await axiosInstance.post('/login', values)
     localStorage.setItem('access_token', data.access_token)
   } catch (error) {
     console.warn('Error')

@@ -4,9 +4,14 @@
     <div class="flex items-center text-black font-bold">
       <Icon icon="skill-icons:devto-dark" style="font-size: 45px" />
       <div class="ml-5 flex font-semibold">
-        <div class="p-3 rounded hover:text-blue cursor-pointer">User</div>
-        <div class="p-3 rounded hover:text-blue cursor-pointer">Role</div>
-        <div class="p-3 rounded hover:text-blue cursor-pointer">Permission</div>
+        <div
+          v-for="(item, index) in menu"
+          :key="index"
+          v-permission="item.meta.permission"
+          class="p-3 rounded hover:text-blue cursor-pointer"
+        >
+          {{ item.title }}
+        </div>
       </div>
     </div>
     <nav :class="['flex', 'items-center', { hidden: !isMenuOpen, 'flex-col': isMenuOpen }]">
@@ -22,6 +27,29 @@ import { ref } from 'vue'
 import { Icon } from '@iconify/vue'
 
 const isMenuOpen = ref(false)
+const menu = [
+  {
+    title: 'User',
+    meta: {
+      permission: 'view_users'
+    },
+    link: '/users'
+  },
+  {
+    title: 'Role',
+    meta: {
+      permission: 'view_roles'
+    },
+    link: '/roles'
+  },
+  {
+    title: 'Permission',
+    meta: {
+      permission: 'view_permissions'
+    },
+    link: '/permissions'
+  }
+]
 
 const toggleMenu = () => {
   isMenuOpen.value = !isMenuOpen.value
