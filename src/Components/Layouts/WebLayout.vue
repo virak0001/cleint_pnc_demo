@@ -1,10 +1,10 @@
 <script setup lang="ts">
-import WebHeaderMenu from '@/components/WebHeaderMenu.vue'
+import WebHeaderMenu from '@/Components/WebHeaderMenu.vue'
 </script>
 <template>
   <WebHeaderMenu />
-  <div class="md:px-50 pt-10 h-full">
-    <div class="rounded-lg h-full">
+  <div class="md:px-50 h-full">
+    <div class="h-full">
       <slot />
     </div>
   </div>

@@ -1,3 +1,6 @@
+<script setup lang="ts">
+import AdminLayout from '@/Components/Layouts/AdminLayout.vue'
+</script>
 <template>
   <AdminLayout
     ><div class="flex flex-col bg-white justify-center rounded-lg h-[calc(100vh-150px)]">
@@ -9,7 +12,3 @@
     </div>
   </AdminLayout>
 </template>
-
-<script setup lang="ts">
-import AdminLayout from '@/components/layouts/AdminLayout.vue'
-</script>

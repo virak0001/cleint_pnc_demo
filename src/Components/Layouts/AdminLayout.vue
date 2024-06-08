@@ -9,5 +9,5 @@
 </template>
 
 <script setup lang="ts">
-import HeaderMenu from '@/components/HeaderMenu.vue'
+import HeaderMenu from '@/Components/HeaderMenu.vue'
 </script>

@@ -10,7 +10,7 @@ const router = createRouter({
     {
       path: '/admin/dashboard',
       name: 'dashboard',
-      component: () => import('../views/admin/dashboard.vue'),
+      component: () => import('../views/Admin/DashboardView.vue'),
       meta: {
         requiresAuth: true,
         role: 'admin'
@@ -19,12 +19,12 @@ const router = createRouter({
     {
       path: '/admin/login',
       name: 'login',
-      component: () => import('../views/admin/auth/login.vue')
+      component: () => import('../views/Admin/Auth/LoginView.vue')
     },
     {
       path: '/',
       name: 'home',
-      component: () => import('../views/web/home.vue')
+      component: () => import('../views/Web/HomeView.vue')
     }
   ]
 })
@@ -56,7 +56,7 @@ router.beforeEach(async (to, from, next) => {
   }
 
   if (authRequired && !store.isAuthenticated) {
-    next('/login')
+    next('/admin/login')
   } else {
     next()
   }
